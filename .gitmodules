@@ -1,0 +1,3 @@
+[submodule "wharf/webdriver-wharf"]
+	path = wharf/webdriver-wharf
+	url = https://github.com/seandst/webdriver-wharf.git

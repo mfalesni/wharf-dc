@@ -1,0 +1,13 @@
+diff --git a/webdriver_wharf/db.py b/webdriver_wharf/db.py
+index dfd18c5..93333ab 100644
+--- a/webdriver_wharf/db.py
++++ b/webdriver_wharf/db.py
+@@ -116,7 +116,7 @@ except KeyError:
+ 
+ def engine():
+     if not hasattr(thread_local, 'engine'):
+-        thread_local.engine = create_engine(url, connect_args={'check_same_thread': False})
++        thread_local.engine = create_engine(url)
+         Base.metadata.create_all(thread_local.engine)
+     return thread_local.engine
+ 

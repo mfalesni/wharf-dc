@@ -1,0 +1,27 @@
+version: '2'
+services:
+    wharf:
+        build: wharf/
+        privileged: true
+        restart: always
+        ports:
+            - "4899:4899"
+        volumes:
+            - "/var/run/docker.sock:/var/run/docker.sock"
+            - "/usr/bin/docker:/bin/docker"
+        depends_on:
+            - postgres
+        environment:
+            WEBDRIVER_WHARF_DB_URL: "postgresql://wharf:wharf@postgres:5432/wharf"
+    postgres:
+        image: postgres:9.6
+        ports:
+            - "5432:5432"
+        environment:
+            POSTGRES_PASSWORD: wharf
+            POSTGRES_USER: wharf
+            POSTGRES_DB: wharf
+#         volumes:
+#             - db-volume:/var/lib/postgresql/data
+# volumes:
+#     db-volume:
